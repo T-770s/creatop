@@ -1,7 +1,7 @@
 'use client';
 
 import { Suspense, useRef } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Stars, Preload, Environment } from '@react-three/drei';
 import { EffectComposer, Bloom, ChromaticAberration } from '@react-three/postprocessing';
 import * as THREE from 'three';
@@ -39,26 +39,6 @@ function GridFloor() {
       position={[0, -1.49, 0]}
     />
   );
-}
-
-function CameraController({ target }: { target: THREE.Vector3 | null }) {
-  const { camera } = useThree();
-  const currentPos = useRef(new THREE.Vector3(0, 18, 28));
-  const currentLook = useRef(new THREE.Vector3(0, 0, 0));
-
-  useFrame((_, delta) => {
-    if (target) {
-      const dest = target.clone().add(new THREE.Vector3(0, 4, 8));
-      currentPos.current.lerp(dest, delta * 1.5);
-      currentLook.current.lerp(target, delta * 2);
-    } else {
-      currentPos.current.lerp(new THREE.Vector3(0, 18, 28), delta * 0.5);
-      currentLook.current.lerp(new THREE.Vector3(0, 0, 0), delta * 0.5);
-    }
-    camera.position.copy(currentPos.current);
-    camera.lookAt(currentLook.current);
-  });
-  return null;
 }
 
 function AtmosphericLights() {

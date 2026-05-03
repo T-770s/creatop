@@ -32,21 +32,32 @@ function FlyingPage({ speed, radius, phase }: { speed: number; radius: number; p
   );
 }
 
+const SHELF_COLORS = ['#2D4A7A', '#8B2020', '#1F5C1F', '#5C3D1F', '#4A1F5C', '#1F4A5C'];
+const BOOK_DATA = SHELF_COLORS.map((color, i) => ({
+  color,
+  yOffset: 0.2 + (i * 0.017 % 0.05),
+  height: 0.38 + (i * 0.023 % 0.12),
+}));
+
 function BookShelf({ position }: { position: [number, number, number] }) {
-  const colors = ['#2D4A7A', '#8B2020', '#1F5C1F', '#5C3D1F', '#4A1F5C', '#1F4A5C'];
   return (
     <group position={position}>
-      {/* Shelf */}
-      <mesh position={[0, 0, 0]} castShadow>
+      {/* Shelf board */}
+      <mesh castShadow>
         <boxGeometry args={[2.4, 0.06, 0.3]} />
         <meshStandardMaterial color="#3D2B1F" roughness={0.5} metalness={0.2} />
       </mesh>
+      {/* Back panel */}
+      <mesh position={[0, 0.22, -0.14]}>
+        <boxGeometry args={[2.4, 0.5, 0.02]} />
+        <meshStandardMaterial color="#2A1A0E" roughness={0.8} />
+      </mesh>
       {/* Books */}
-      {colors.map((c, i) => (
+      {BOOK_DATA.map((b, i) => (
         <Float key={i} speed={0.8 + i * 0.2} floatIntensity={0.05}>
-          <mesh position={[(i - 2.5) * 0.38, 0.2 + Math.random() * 0.05, 0]} castShadow>
-            <boxGeometry args={[0.3, 0.38 + Math.random() * 0.12, 0.22]} />
-            <meshStandardMaterial color={c} roughness={0.6} metalness={0.1} emissive={c} emissiveIntensity={0.08} />
+          <mesh position={[(i - 2.5) * 0.38, b.yOffset, 0]} castShadow>
+            <boxGeometry args={[0.3, b.height, 0.22]} />
+            <meshStandardMaterial color={b.color} roughness={0.6} metalness={0.1} emissive={b.color} emissiveIntensity={0.08} />
           </mesh>
         </Float>
       ))}
