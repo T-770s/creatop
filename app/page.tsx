@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import MagneticCursor from '@/components/ui/MagneticCursor';
 import { FEATURED_BUSINESSES } from '@/data/businesses';
 
@@ -187,6 +188,13 @@ export default function HomePage() {
           <p className="absolute bottom-7 left-1/2 -translate-x-1/2 text-[10px] font-mono text-white/12 tracking-widest animate-breath">
             גרור · זום · לחץ על עסק
           </p>
+
+          {/* Legal footer */}
+          <div className="absolute bottom-3 right-4 flex gap-4 text-[9px] font-mono text-white/15 tracking-widest">
+            <Link href="/privacy" data-hover className="hover:text-cyan-400 transition-colors">פרטיות</Link>
+            <Link href="/terms" data-hover className="hover:text-cyan-400 transition-colors">תנאים</Link>
+            <Link href="/accessibility" data-hover className="hover:text-cyan-400 transition-colors">נגישות</Link>
+          </div>
         </div>
       )}
 

@@ -264,6 +264,63 @@ canvas { display: block; }
 }
 
 /* ─────────────────────────────────────────
+   LEGAL / LONG-FORM CONTENT
+───────────────────────────────────────── */
+.legal-content h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--parchment);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+}
+.legal-content p { font-size: 0.97rem; line-height: 1.75; }
+.legal-content ul {
+  list-style: none;
+  padding-inline-start: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.legal-content ul li {
+  position: relative;
+  padding-inline-start: 1rem;
+}
+.legal-content ul li::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.7rem;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--cyan);
+  opacity: 0.6;
+}
+.legal-content strong { color: var(--parchment); font-weight: 600; }
+.legal-content a { transition: color 0.2s ease; }
+
+/* ─────────────────────────────────────────
+   ACCESSIBILITY: REDUCED MOTION
+───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .scan-line, .animate-ping-slow, .animate-pulse-glow, .animate-breath { display: none; }
+}
+
+/* ─────────────────────────────────────────
+   MOBILE / TOUCH: restore native cursor
+───────────────────────────────────────── */
+@media (hover: none), (pointer: coarse) {
+  body { cursor: auto; }
+  .cursor { display: none !important; }
+}
+
+/* ─────────────────────────────────────────
    TAG CHIP
 ───────────────────────────────────────── */
 .tag-chip {
