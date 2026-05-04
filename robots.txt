@@ -1,0 +1,13 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+
+User-Agent: GPTBot
+Allow: /
+
+User-Agent: Googlebot
+Allow: /
+
+Host: https://studio.app
+Sitemap: https://studio.app/sitemap.xml

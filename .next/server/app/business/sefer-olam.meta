@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/business/layout,_N_T_/business/[slug]/layout,_N_T_/business/[slug]/page,_N_T_/business/sefer-olam"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/business/$d$slug/__PAGE__",
+    "/business/$d$slug",
+    "/business",
+    "/_index",
+    "/_head"
+  ]
+}

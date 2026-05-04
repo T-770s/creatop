@@ -1,0 +1,13 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+
+User-Agent: GPTBot
+Allow: /
+
+User-Agent: Googlebot
+Allow: /
+
+Host: https://t-770s.github.io/creatop
+Sitemap: https://t-770s.github.io/creatop/sitemap.xml
